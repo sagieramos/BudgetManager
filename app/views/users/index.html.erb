@@ -1,0 +1,14 @@
+<h1>Your Entities</h1>
+
+<% if @users.any? %>
+  <ul>
+    <% @users.each do |entity| %>
+      <li>
+        <%= entity.name %> <!-- Assuming 'name' is an attribute of your Entity model -->
+        <!-- Add other attributes you want to display -->
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No entities found for the current user.</p>
+<% end %>
