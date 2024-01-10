@@ -11,7 +11,7 @@ class Group < ApplicationRecord
   before_validation :set_default_icon
 
   def self.descending_order_for_user(user)
-    where(user: user).order(created_at: :desc)
+    where(user:).order(created_at: :desc)
   end
 
   private
@@ -20,9 +20,9 @@ class Group < ApplicationRecord
     return unless icon.attached? && icon.blob.present?
 
     allowed_formats = %w[image/png image/gif image/jpeg image/jpg image/svg+xml]
-    unless allowed_formats.include?(icon.blob.content_type)
-      errors.add(:icon, 'Field only accepts png, gif, jpeg, jpg, or svg.')
-    end
+    return if allowed_formats.include?(icon.blob.content_type)
+
+    errors.add(:icon, 'Field only accepts png, gif, jpeg, jpg, or svg.')
   end
 
   def set_default_icon

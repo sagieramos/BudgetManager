@@ -1,26 +1,51 @@
-<h1>All Entities</h1>
+  <div class="row">
+    <div id="toggle-buttons" class="mb-3">
+      <button id="recent-toggle" type="button">Most Recent</button>
+      <button id="ancient-toggle" type="button">Most Ancient</button>
+    </div>
 
-<% if @entities.any? %>
-  <ul>
-    <% @entities.each do |entity| %>
-      <li>
-        <% if entity.groups.any? %>
-            <%= image_tag entity.groups.first.icon || 'default.png', alt: 'Group Icon' %> 
-        <% else %>
-            <%= image_tag 'default.png', alt: 'Default Icon' %>
-        <% end %>
-        <%= link_to entity.name, entity %>
-        <%= entity.amount %>
-        <p>
-            <%= entity.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
-        </p>
-        <%= link_to 'Edit', edit_entity_path(entity) %>
-        <%= link_to 'Delete', entity, method: :delete, data: { confirm: 'Are you sure?' } %>
-      </li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>No entities found.</p>
-<% end %>
+<div id="entity-list">
+  <div id="recent-entities" style="display: block;">
+    <ul class="entities-collections">
+      <% @recent_entities.each do |entity| %>
+        <% @entity = entity %>
+        <%= render partial: 'entity' %>
+      <% end %>
+    </ul>
+  </div>
 
-<%= link_to 'New Entity', new_entity_path %>
+  <div id="ancient-entities" style="display: none;">
+    <ul class="entities-collections">
+      <% @ancient_entities.each do |entity| %>
+        <% @entity = entity %>
+        <%= render partial: 'entity' %>
+      <% end %>
+    </ul>
+  </div>
+</div>
+</div>
+
+<%= link_to 'New Entity', new_entity_path, class: "link-to-new btn btn-success mt-3" %>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const entityList = document.getElementById('entity-list');
+    const recentEntities = document.getElementById('recent-entities');
+    const ancientEntities = document.getElementById('ancient-entities');
+    const toggleButtons = document.getElementById('toggle-buttons');
+
+    toggleButtons.addEventListener('click', function(event) {
+      if (event.target.id === 'recent-toggle') {
+        recentEntities.style.display = 'block';
+        ancientEntities.style.display = 'none';
+        document.getElementById('recent-toggle').style.textDecoration = 'underline';
+        document.getElementById('ancient-toggle').style.textDecoration = 'none';
+      } else if (event.target.id === 'ancient-toggle') {
+        recentEntities.style.display = 'none';
+        ancientEntities.style.display = 'block';
+        document.getElementById('recent-toggle').style.textDecoration = 'none';
+        document.getElementById('ancient-toggle').style.textDecoration = 'underline';
+      }
+    });
+  });
+</script>

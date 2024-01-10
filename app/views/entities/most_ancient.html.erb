@@ -1,0 +1,16 @@
+<h1>Most Ancient Entities</h1>
+
+<%= link_to 'Most Recent', most_recent_entities_path %>
+
+<% if @ancient_entities.any? %>
+  <ul class="entities-collections">
+    <% @ancient_entities.each do |entity| %>
+      <% @entity = entity %>
+      <%= render partial: 'entity' %>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No ancient entities found for the current user.</p>
+<% end %>
+
+<%= link_to 'New Entity', new_entity_path %>

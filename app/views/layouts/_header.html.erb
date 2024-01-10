@@ -6,11 +6,6 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <%= link_to 'Home', root_path, class: 'nav-link active', 'aria-current': 'page' %>
-        <a class="nav-link" href="#">logout</a>
-        <a class="nav-link" href="#">Pricing</a>
-        <% if user_signed_in? && !current_page?(new_entity_path) %>
-          <%= link_to 'New Entity', new_entity_path %>
-        <% end %>
         <br />
         <% if user_signed_in? %>
           <%= form_tag(destroy_user_session_path, method: :delete) do %>

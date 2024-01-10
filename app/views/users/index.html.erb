@@ -6,18 +6,23 @@
       <%= link_to entity_path(entity) do %>
         <li class="entity">
           <% if entity.groups.any? %>
-            <%= image_tag entity.groups.first.icon || 'default_icon.png', alt: 'Group Icon' %> 
+            <% group_icon = entity.groups.first.icon %>
+            <%= image_tag(group_icon.present? ? group_icon : 'default.png', alt: 'GroupIcon', class: "group-icon") %> 
           <% else %>
-            <%= image_tag 'default.png', alt: 'Default Icon' %>
+            <%= image_tag 'default.png', alt: 'Default Icon', class: "group-icon" %>
           <% end %>
-          <%= entity.name %> - 
-          <%= entity.amount %> - 
-          <br />
-          <!-- <%= entity.groups.map(&:name).join(', ') %> -->
-           <% if entity.groups.any? %>
+          <div>
+            <div>
+              <p><%= entity.name %></p> 
+              <p><%= entity.amount %></p>
+            </div>
+            <p><%= entity.created_at.strftime('%Y-%m-%d %H:%M:%S') %></p>
+          </div>
+          <!-- <p>
+          <% if entity.groups.any? %>
             <%= entity.groups.map { |group| link_to(group.name, group_path(group)) }.join(', ').html_safe %>
-          <% end %>
-          
+          <% end %>  
+          -->
         </li>
       <% end %>
     <% end %>

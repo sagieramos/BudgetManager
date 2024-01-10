@@ -1,0 +1,14 @@
+<h1>All Entities</h1>
+
+<% if @entities.any? %>
+  <ul class="entities-collections">
+    <% @entities.each do |entity| %>
+      <% @entity = entity %>
+      <%= render partial: 'entity' %>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No entities found.</p>
+<% end %>
+
+<%= link_to 'New Entity', new_entity_path, class: "link-to-new" %>

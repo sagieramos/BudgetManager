@@ -11,6 +11,9 @@
     </div>
   <% end %>
 
+  <!-- Add a hidden field for group_id -->
+  <%= form.hidden_field :group_id, value: params[:group_id] %>
+
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>

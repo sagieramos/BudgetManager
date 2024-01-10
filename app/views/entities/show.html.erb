@@ -1,3 +1,10 @@
+<% if @entity.groups.any? %>
+    <% group_icon = @entity.groups.first.icon %>
+    <%= image_tag(group_icon.present? ? group_icon : 'default.png', alt: 'GroupIcon') %> 
+<% else %>
+    <%= image_tag 'default.png', alt: 'Default Icon' %>
+<% end %>
+
 <h1><%= @entity.name %></h1>
 
 <p>Amount: <%= @entity.amount %></p>
@@ -12,11 +19,11 @@
 </div>
 
 <br />
-<div>
-
-    <%= link_to 'Back to All Entities', entities_path %>
-
+<% if @entity.user == current_user %>
+  <div>
     <%= link_to 'Edit Entity', edit_entity_path(@entity) %>
-
     <%= link_to 'Delete Entity', @entity, method: :delete, data: { confirm: 'Are you sure?' } %>
-</div>
+  </div>
+<% end %>
+<%= link_to 'Back to All Entities', entities_path %>
+
