@@ -16,11 +16,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_08_164353) do
 
   create_table "entities", force: :cascade do |t|
     t.string "name"
-    t.decimal "amount", precision: 10, scale: 2
-    t.bigint "user_id", null: false
+    t.money "amount", scale: 2
+    t.bigint "author_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_entities_on_user_id"
+    t.index ["author_id"], name: "index_entities_on_author_id"
   end
 
   create_table "group_entities", force: :cascade do |t|
@@ -54,7 +54,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_08_164353) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "entities", "users"
+  add_foreign_key "entities", "users", column: "author_id"
   add_foreign_key "group_entities", "entities"
   add_foreign_key "group_entities", "groups"
   add_foreign_key "groups", "users"
