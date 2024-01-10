@@ -183,20 +183,28 @@
   }
 
   .entity-detail {
-    max-width: 600px;
     margin: 0 auto;
+    margin-top: 24px;
+    max-width: 600px;
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
 
+  .entity-i {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
   .transaction-amount {
     font-size: 18px;
     margin-bottom: 10px;
   }
 
   .created-at {
-    font-size: 16px;
+    font-size: 0.8em;
     color: #6c757d; 
     margin-bottom: 10px;
   }
@@ -231,6 +239,20 @@
   text-decoration: underline;
 }
 
+.group-name-nl {
+  font-size: 18px;
+  color: #6c757d; 
+  margin-right: 10px;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+.h3-title {
+  color: #6c757d; 
+  font-size: 1rem;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
 
   ul {
     padding: 0;

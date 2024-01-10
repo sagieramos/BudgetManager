@@ -3,7 +3,7 @@
 <h3>Transactions: (<%= @group.entities.count %>), Total Amount: <%= @total_amount %>:</h3>
 
 <% if @group.icon.attached? %>
-    <%= image_tag @group.icon %>
+    <%= image_tag @group.icon, class: "group-icon" %>
 <% else %>
     <%= image_tag 'default.png' %>
 <% end %>

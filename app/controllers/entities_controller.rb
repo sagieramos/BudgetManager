@@ -40,9 +40,21 @@ class EntitiesController < ApplicationController
   end
 
   def destroy
-    @entity.destroy
-    redirect_to entities_path, notice: 'Entity was successfully destroyed.'
+    @entity = Entity.find(params[:id])
+    puts "-----------------------------------------------------destroy"
+    if @entity.destroy
+      puts "-----------------------------------------------------destrohfhh"
+      redirect_to entities_path, notice: 'Entity was successfully destroyed.'
+    else
+      puts "-----------------------------------------------------"
+      puts @entity.errors.full_messages
+      puts "-----------------------------------------------------"
+
+      flash[:alert] = 'Error destroying entity.'
+      render :show
+    end
   end
+  
 
   def most_recent
     @recent_entities = Entity.most_recent(current_user)
@@ -59,6 +71,6 @@ class EntitiesController < ApplicationController
   end
 
   def entity_params
-    params.require(:entity).permit(:name, :amount)
+    params.require(:entity).permit(:name, :amount, group_ids: [] )
   end
 end

@@ -11,8 +11,10 @@
     </div>
   <% end %>
 
-  <!-- Add a hidden field for group_id -->
-  <%= form.hidden_field :group_id, value: params[:group_id] %>
+  <div class="field">
+    <%= form.label :Select_group %>
+    <%= form.collection_check_boxes(:group_ids, current_user.groups, :id, :name) %>
+  </div>
 
   <div class="field">
     <%= form.label :name %>
