@@ -1,0 +1,11 @@
+<h1><%= @group.name %></h1>
+
+<% if @group.icon.attached? %>
+    <%= image_tag @group.icon %>
+<% else %>
+    <%= image_tag 'default.png' %>
+<% end %>
+<p>Entities: <%= @group.entities.count %></p>
+
+<%= link_to 'Edit', edit_group_path(@group) %> |
+<%= link_to 'Back', groups_path %>

@@ -1,7 +1,11 @@
 class EntitiesController < ApplicationController
+  before_action :set_entity, only: [:show, :edit, :update, :destroy]
+
   def index
-    @groups = current_user.groups
-    @entities = @groups.map(&:entities).flatten
+    @entities = Entity.all
+  end
+
+  def show
   end
 
   def new
@@ -10,29 +14,37 @@ class EntitiesController < ApplicationController
 
   def create
     @entity = Entity.new(entity_params)
-    @groups = current_user.groups
 
-    if !@entity.valid?
-      flash.now[:notice] = 'Kindly create a valid entity by filling all information'
-      render :new, status: :unprocessable_entity
-    elsif @groups.empty?
-      flash.now[:notice] = 'Minimum of 1 group is needed'
-      render :new, status: :unprocessable_entity
-    elsif @entity.save
-      @groups.each do |group|
-        group.entities << @entity
-      end
-      flash.now[:notice] = 'Entity was successfully created'
-      redirect_to root_path
+    if @entity.save
+      redirect_to @entity, notice: 'Entity was successfully created.'
     else
-      flash.now[:notice] = 'An unexpected error occurred'
-      render :new, status: :unprocessable_entity
+      render :new
     end
+  end
+
+  def edit
+  end
+
+  def update
+    if @entity.update(entity_params)
+      redirect_to @entity, notice: 'Entity was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @entity.destroy
+    redirect_to entities_path, notice: 'Entity was successfully destroyed.'
   end
 
   private
 
+  def set_entity
+    @entity = Entity.find(params[:id])
+  end
+
   def entity_params
-    params.require(:entity).permit(:name, :amount, group_ids: []).merge(user: current_user)
+    params.require(:entity).permit(:name, :amount)
   end
 end

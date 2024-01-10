@@ -1,14 +1,29 @@
 <h1>Your Entities</h1>
 
 <% if @users.any? %>
-  <ul>
+  <ul class="entities-collections">
     <% @users.each do |entity| %>
-      <li>
-        <%= entity.name %> <!-- Assuming 'name' is an attribute of your Entity model -->
-        <!-- Add other attributes you want to display -->
-      </li>
+      <%= link_to entity_path(entity) do %>
+        <li class="entity">
+          <% if entity.groups.any? %>
+            <%= image_tag entity.groups.first.icon || 'default_icon.png', alt: 'Group Icon' %> 
+          <% else %>
+            <%= image_tag 'default.png', alt: 'Default Icon' %>
+          <% end %>
+          <%= entity.name %> - 
+          <%= entity.amount %> - 
+          <br />
+          <!-- <%= entity.groups.map(&:name).join(', ') %> -->
+           <% if entity.groups.any? %>
+            <%= entity.groups.map { |group| link_to(group.name, group_path(group)) }.join(', ').html_safe %>
+          <% end %>
+          
+        </li>
+      <% end %>
     <% end %>
   </ul>
 <% else %>
   <p>No entities found for the current user.</p>
 <% end %>
+
+<%= link_to 'New Entity', new_entity_path %>

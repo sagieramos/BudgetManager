@@ -1,0 +1,22 @@
+<h1><%= @entity.name %></h1>
+
+<p>Amount: <%= @entity.amount %></p>
+
+<p>Created At: <%= @entity.created_at %></p>
+
+<div>
+    <% if @entity.groups.any? %>
+        <span>Groups: </span>
+        <%= @entity.groups.map { |group| link_to(group.name, group_path(group)) }.join(' | ').html_safe %>
+    <% end %> 
+</div>
+
+<br />
+<div>
+
+    <%= link_to 'Back to All Entities', entities_path %>
+
+    <%= link_to 'Edit Entity', edit_entity_path(@entity) %>
+
+    <%= link_to 'Delete Entity', @entity, method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>

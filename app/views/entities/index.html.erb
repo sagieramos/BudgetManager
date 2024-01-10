@@ -1,0 +1,26 @@
+<h1>All Entities</h1>
+
+<% if @entities.any? %>
+  <ul>
+    <% @entities.each do |entity| %>
+      <li>
+        <% if entity.groups.any? %>
+            <%= image_tag entity.groups.first.icon || 'default.png', alt: 'Group Icon' %> 
+        <% else %>
+            <%= image_tag 'default.png', alt: 'Default Icon' %>
+        <% end %>
+        <%= link_to entity.name, entity %>
+        <%= entity.amount %>
+        <p>
+            <%= entity.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
+        </p>
+        <%= link_to 'Edit', edit_entity_path(entity) %>
+        <%= link_to 'Delete', entity, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No entities found.</p>
+<% end %>
+
+<%= link_to 'New Entity', new_entity_path %>

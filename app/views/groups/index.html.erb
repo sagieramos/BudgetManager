@@ -1,0 +1,25 @@
+<h1>Your Groups</h1>
+
+<% if @groups.any? %>
+  <ul class="groups">
+    <% @groups.each do |group| %>
+      <li class="group">
+        <% if group.icon.attached? %>
+          <%= image_tag group.icon %>
+        <% else %>
+          <%= image_tag 'default.png' %>
+        <% end %>
+        <div>
+        <%= link_to group.name, group_path(group) %>
+        <p>
+          (Entities: <%= group.entities.count %>, Total Amount: <%= group.entities.sum(:amount) %>)
+        </p>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No groups found for the current user.</p>
+<% end %>
+
+<%= link_to 'New Group', new_group_path %>

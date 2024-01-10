@@ -1,34 +1,5 @@
-<!-- app/views/entities/new.html.erb -->
+<h1>New Entity</h1>
 
-<%= form_with(model: @entity, url: entities_path, method: :post) do |form| %>
-  <% if @entity.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@entity.errors.count, 'error') %> prohibited this entity from being saved:</h2>
-      <ul>
-        <% @entity.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= render 'form', entity: @entity %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :amount %>
-    <%= form.number_field :amount %>
-  </div>
-
-  <div class="field">
-    <%= form.label :group_ids %>
-    <!--<%= form.collection_select(:group_ids, current_user.groups, :id, :name, { prompt: 'Select Groups' }, multiple: true) %>-->
-    <%= form.collection_select :group_id, current_user.groups, :id, :name, include_blank: "Select existing group" %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit 'Create Entity' %>
-  </div>
-<% end %>
+<%= link_to 'Back to All Entities', entities_path %>

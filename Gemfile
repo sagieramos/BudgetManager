@@ -69,3 +69,5 @@ end
 gem 'rubocop', '>= 1.0', '< 2.0'
 
 gem 'devise', '~> 4.9', '>= 4.9.2'
+
+gem "rails-ujs", "~> 0.1.0"
