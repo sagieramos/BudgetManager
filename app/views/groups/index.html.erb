@@ -20,7 +20,8 @@
           </div>
 
           <p class="group-info">
-              <%= group.entities.count %> transactions <br /><%= group.entities.sum(:amount) %> NGN
+              <% currency = format_currency(group.entities.sum(:amount))%>
+              <%= group.entities.count %> transactions <span><%= currency %></span>
           </p>
           </div>
       </li>
@@ -30,4 +31,4 @@
   <p class="no-groups-message">No groups found for the current user.</p>
 <% end %>
 
-<%= link_to 'New Group', new_group_path, class: "new-group-link" %>
+<%= link_to 'add a new category', new_group_path, class: "new-group-link" %>

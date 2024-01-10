@@ -10,9 +10,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "pages#splash"
 
-  resources :entities, only: [:index, :new, :create, :show, :destroy, :edit, :update, :all], as: :transactions
+  resources :entities, only: [:index, :new, :create, :show, :destroy, :edit, :update, :all]
 
-  resources :groups, only: [:index, :new, :create, :show, :destroy, :edit, :update], as: :categories
+  resources :groups, only: [:index, :new, :create, :show, :destroy, :edit, :update]
   resources :users, only: [:index, :new, :create, :show, :destroy, :edit, :update]
 
 end

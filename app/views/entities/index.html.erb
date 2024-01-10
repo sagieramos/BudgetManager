@@ -1,7 +1,7 @@
   <div class="row">
     <div id="toggle-buttons" class="mb-3">
-      <button id="recent-toggle" type="button">Most Recent</button>
       <button id="ancient-toggle" type="button">Most Ancient</button>
+      <button id="recent-toggle" type="button" style="text-decoration: underline;">Most Recent</button>
     </div>
 
 <div id="entity-list">
@@ -25,7 +25,7 @@
 </div>
 </div>
 
-<%= link_to 'New Entity', new_entity_path, class: "link-to-new btn btn-success mt-3" %>
+<%= link_to 'New Entity', new_entity_path, class: "link-to-new btn btn-success mt-3 new-group-link" %>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
