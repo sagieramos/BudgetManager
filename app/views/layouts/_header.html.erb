@@ -1,21 +1,22 @@
-<nav class="navbar bg-primary navbar-expand-lg" data-bs-theme="dark">
-  <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <%= link_to 'Home', root_path, class: 'nav-link active', 'aria-current': 'page' %>
-        <br />
-        <% if user_signed_in? %>
-          <%= form_tag(destroy_user_session_path, method: :delete) do %>
-            <%= submit_tag "Sign Out", class: "sign-out-btn" %>
+<header>
+  <nav class="navbar bg-primary navbar-expand-lg" data-bs-theme="dark">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <%= link_to 'Home', root_path, class: 'nav-link active', 'aria-current': 'page' %>
+          <br />
+          <% if user_signed_in? %>
+            <%= form_tag(destroy_user_session_path, method: :delete) do %>
+              <%= submit_tag "Sign Out", class: "sign-out-btn" %>
+            <% end %>
           <% end %>
-        <% end %>
-
+        </div>
       </div>
+      <a class="navbar-brand" href="#"><%= controller_name.humanize.titleize %></a>
+      <span class="material-symbols-outlined text-white">search</span>
     </div>
-    <a class="navbar-brand" href="#">TRANSACTIONS</a>
-    <span class="material-symbols-outlined text-white">search</span>
-  </div>
-</nav>
+  </nav>
+</header>

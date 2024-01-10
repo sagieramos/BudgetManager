@@ -4,7 +4,7 @@ class EntitiesController < ApplicationController
   def index
     @recent_entities = Entity.most_recent(current_user)
     @ancient_entities = Entity.most_ancient(current_user)
-    @entities = Entity.all # Or whatever logic you have for all entities
+    @entities = Entity.all
   end
 
   def all(_index)

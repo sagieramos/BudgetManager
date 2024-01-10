@@ -10,10 +10,11 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 
-<body class="container">
+<body>
   <% if user_signed_in? || request.path != root_path %>
     <%= render 'layouts/header' %>
   <% end %>
+  <div id="hero" class="container">
 
   <div>
     <% if notice %>
@@ -29,6 +30,7 @@
     <% end %>
 
     <%= yield %>
+  </div>
   </div>
 
   <%= javascript_importmap_tags %>

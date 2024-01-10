@@ -1,9 +1,4 @@
 <% if @groups.any? %>
-<div class="header-bg">
-  <p class="total-info">
-    Total transactions: <%= @total_entities_count %>, Total Amount: <%= @total_entities_sum %> NGN
-  </p>
-</div>
   <ul class="groups-list">
     <% @groups.each do |group| %>
       <li class="group-item">

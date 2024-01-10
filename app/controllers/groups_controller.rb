@@ -8,7 +8,10 @@ class GroupsController < ApplicationController
     @total_entities_sum = @groups.sum { |group| group.entities.sum(:amount) }
   end
 
-  def show; end
+  def show
+    @group = Group.find(params[:id])
+    @total_amount = @group.entities.sum(:amount)
+  end
 
   def new
     @group = current_user.groups.build

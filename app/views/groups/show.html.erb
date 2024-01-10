@@ -1,11 +1,12 @@
 <h1><%= @group.name %></h1>
 
+<h3>Transactions: (<%= @group.entities.count %>), Total Amount: <%= @total_amount %>:</h3>
+
 <% if @group.icon.attached? %>
     <%= image_tag @group.icon %>
 <% else %>
     <%= image_tag 'default.png' %>
 <% end %>
-<h3>Entities: (<%= @group.entities.count %>)</h3>
 <ul>
     <% @group.entities.each do |entity| %>
         <li>
