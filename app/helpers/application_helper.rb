@@ -22,7 +22,11 @@ module ApplicationHelper
 
   def groups_text
     if params[:id]
-      "Transactions for Category: #{@group.name}"
+      if action_name == 'edit'
+        "Editing Category: #{@group.name}"
+      else
+        "Transactions for Category: #{@group.name}"
+      end
     elsif action_name == 'new'
       '« New Category »'
     else
@@ -32,7 +36,11 @@ module ApplicationHelper
 
   def entities_text
     if params[:id]
-      "Transaction: #{@entity.name}"
+      if action_name == 'edit'
+        "Editing Transaction: #{@entity.name}"
+      else
+        "Transaction: #{@entity.name}"
+      end
     elsif action_name == 'new'
       '« New Transaction »'
     else

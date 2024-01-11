@@ -1,3 +1,5 @@
+<br />
+<div class="group-item">
 <%= form_with(model: @group, local: true) do |form| %>
   <% if @group.errors.any? %>
     <div id="error_explanation">
@@ -23,6 +25,9 @@
 
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Submit' %> 
   </div>
 <% end %>
+</div>
+
+
