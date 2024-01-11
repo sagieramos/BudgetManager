@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>BudgetManager</title>
+  <title>Budget Manager - <%= navbar_brand_text %></title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <% if user_signed_in? || request.path != root_path %>
+  <% if user_signed_in? %>
     <%= render 'layouts/header' %>
   <% end %>
   <div id="hero" class="container">

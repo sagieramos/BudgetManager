@@ -15,4 +15,8 @@ class Entity < ApplicationRecord
   def self.most_ancient(user, limit = 5)
     where(user:).order(created_at: :asc).limit(limit)
   end
+
+  def self.entities_by_user(user)
+    where(user:).order(created_at: :desc)
+  end
 end

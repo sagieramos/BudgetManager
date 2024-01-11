@@ -1,10 +1,11 @@
 class EntitiesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_entity, only: %i[show edit update destroy]
 
   def index
+    @entities = Entity.entities_by_user(current_user)
     @recent_entities = Entity.most_recent(current_user)
     @ancient_entities = Entity.most_ancient(current_user)
-    @entities = Entity.all
   end
 
   def all(_index)
@@ -20,7 +21,7 @@ class EntitiesController < ApplicationController
   def create
     @entity = Entity.new(entity_params.merge(author_id: current_user.id))
 
-    @entity.groups << Group.find(params[:entity][:group_id])
+    @entity.groups << Group.find(params[:entity][:group_id]) if params[:entity][:group_id].present?
 
     if @entity.save
       redirect_to @entity, notice: 'Entity was successfully created.'
@@ -41,20 +42,13 @@ class EntitiesController < ApplicationController
 
   def destroy
     @entity = Entity.find(params[:id])
-    puts "-----------------------------------------------------destroy"
     if @entity.destroy
-      puts "-----------------------------------------------------destrohfhh"
       redirect_to entities_path, notice: 'Entity was successfully destroyed.'
     else
-      puts "-----------------------------------------------------"
-      puts @entity.errors.full_messages
-      puts "-----------------------------------------------------"
-
       flash[:alert] = 'Error destroying entity.'
       render :show
     end
   end
-  
 
   def most_recent
     @recent_entities = Entity.most_recent(current_user)
@@ -71,6 +65,6 @@ class EntitiesController < ApplicationController
   end
 
   def entity_params
-    params.require(:entity).permit(:name, :amount, group_ids: [] )
+    params.require(:entity).permit(:name, :amount, group_ids: [])
   end
 end

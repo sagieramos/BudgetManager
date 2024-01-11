@@ -11,10 +11,14 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :Select_group %>
-    <%= form.collection_check_boxes(:group_ids, current_user.groups, :id, :name) %>
-  </div>
+  <% if params[:group_id].present? %>
+    <%= form.hidden_field :group_id, value: params[:group_id] %>
+  <% else %>
+    <div class="field">
+      <%= form.label :Select_group %>
+      <%= form.collection_check_boxes(:group_ids, current_user.groups, :id, :name) %>
+    </div>
+  <% end %>
 
   <div class="field">
     <%= form.label :name %>

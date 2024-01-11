@@ -7,12 +7,16 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <%= link_to 'Home', root_path, class: 'nav-link active', 'aria-current': 'page' %>
-          <br />
           <% if user_signed_in? %>
+            <%= link_to 'Groups', groups_path, class: 'nav-link' %>
+            <%= link_to 'Entities', entities_path, class: 'nav-link' %>
+            <%= link_to 'New Group', new_group_path, class: 'nav-link' %>
+            <%= link_to 'New Entity', new_entity_path, class: 'nav-link' %>
             <%= form_tag(destroy_user_session_path, method: :delete) do %>
               <%= submit_tag "Sign Out", class: "sign-out-btn" %>
             <% end %>
           <% end %>
+          <br />
         </div>
       </div>
       <a class="navbar-brand text-uppercase" href="#">
