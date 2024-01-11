@@ -8,14 +8,21 @@
         <div class="navbar-nav">
           <%= link_to 'Home', root_path, class: 'nav-link active', 'aria-current': 'page' %>
           <% if user_signed_in? %>
-            <%= link_to 'Groups', groups_path, class: 'nav-link' %>
-            <%= link_to 'Entities', entities_path, class: 'nav-link' %>
-            <%= link_to 'New Group', new_group_path, class: 'nav-link' %>
-            <%= link_to 'New Entity', new_entity_path, class: 'nav-link' %>
-            <%= form_tag(destroy_user_session_path, method: :delete) do %>
-              <%= submit_tag "Sign Out", class: "sign-out-btn" %>
-            <% end %>
+            <%= link_to 'Categories', groups_path, class: 'nav-link' %>
+            <%= link_to 'Transactions', entities_path, class: 'nav-link' %>
+            <%= link_to 'Add category', new_group_path, class: 'nav-link' %>
+            <%= link_to 'Add transaction', new_entity_path, class: 'nav-link' %>
+            <br>
+            <span>
+              <%= current_user.email %>
+               <%= current_user.name %>
+            </span>
+            <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+          <% else %>
+            <%= link_to 'Sign In', new_user_session_path, class: 'nav-link' %>
+            <%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link' %>
           <% end %>
+
           <br />
         </div>
       </div>
