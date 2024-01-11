@@ -1,5 +1,5 @@
-<header>
-  <nav class="navbar bg-primary navbar-expand-lg" data-bs-theme="dark">
+<header class="bg-primary fixed-top">
+  <nav class="navbar navbar-expand-lg" data-bs-theme="dark">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -13,10 +13,6 @@
             <%= link_to 'Add category', new_group_path, class: "nav-link #{new_group_class}" %>
             <%= link_to 'Add transaction', new_entity_path, class: "nav-link #{new_entity_class}" %>
             <br>
-            <span>
-              <%= current_user.email %>
-               <%= current_user.name %>
-            </span>
             <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
           <% else %>
             <%= link_to 'Sign In', new_user_session_path, class: 'nav-link' %>
@@ -31,5 +27,7 @@
       </h2>
       <span class="material-symbols-outlined text-white">search</span>
     </div>
+  <%= render 'entities/toggle_buttons' %>
+
   </nav>
 </header>
