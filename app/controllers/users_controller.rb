@@ -1,19 +1,36 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
 
+  before_action :set_user, only: %i[show update destroy edit]
+
   rescue_from ActionController::InvalidAuthenticityToken, with: :handle_unauthorized
 
   def index
     @users = current_user.entities
   end
 
+  def edit
+    return if current_user == @user
+
+    flash[:alert] = 'You are not authorized to edit this user.'
+    redirect_to root_path
+  end
+
+  def show; end
+
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to user_url(@user), notice: 'User was successfully updated.' }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-      end
+    unless current_user == @user
+      flash[:alert] = 'You are not authorized to update this user.'
+      redirect_to root_path
+      return
+    end
+
+    if @user.update(user_params)
+      flash[:notice] = 'User was successfully updated.'
+      redirect_to @user
+    else
+      flash[:alert] = "Error updating user: #{@user.errors.full_messages.join(', ')}"
+      render :edit
     end
   end
 
@@ -33,6 +50,10 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 end

@@ -6,12 +6,12 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <%= link_to 'Home', root_path, class: 'nav-link active', 'aria-current': 'page' %>
           <% if user_signed_in? %>
-            <%= link_to 'Categories', groups_path, class: 'nav-link' %>
-            <%= link_to 'Transactions', entities_path, class: 'nav-link' %>
-            <%= link_to 'Add category', new_group_path, class: 'nav-link' %>
-            <%= link_to 'Add transaction', new_entity_path, class: 'nav-link' %>
+            <%= link_to 'Profile', user_path(current_user), class: "nav-link #{user_class_active}" %>
+            <%= link_to 'Categories', groups_path, class: "nav-link #{group_class_active}" %>
+            <%= link_to 'Transactions', entities_path, class: "nav-link #{entity_class_active}" %>
+            <%= link_to 'Add category', new_group_path, class: "nav-link #{new_group_class}" %>
+            <%= link_to 'Add transaction', new_entity_path, class: "nav-link #{new_entity_class}" %>
             <br>
             <span>
               <%= current_user.email %>

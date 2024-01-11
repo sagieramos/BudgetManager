@@ -9,6 +9,8 @@ module ApplicationHelper
       entities_text
     when 'entity'
       @entity.name
+    when 'users'
+      users_text
     else
       controller_name.humanize.titleize
     end
@@ -45,6 +47,16 @@ module ApplicationHelper
       '« New Transaction »'
     else
       'All Transactions'
+    end
+  end
+
+  def users_text
+    return unless params[:id]
+
+    if action_name == 'edit'
+      'Update profile'
+    else
+      "Hi #{current_user.name.split.first}"
     end
   end
 end

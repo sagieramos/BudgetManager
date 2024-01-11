@@ -8,9 +8,13 @@ class User < ApplicationRecord
 
   before_destroy :delete_associated_group_entities
 
-  validates :name, presence: true, length: { minimum: 5 }
-  validates :email, presence: true, length: { minimum: 5 }
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :name, presence: true, length: { minimum: 5 }, on: :create
+  validates :email, presence: true, length: { minimum: 5 }, on: :create
+  validates :password, presence: true, length: { minimum: 6 }, on: :create
+
+  validates :name, presence: true, length: { minimum: 5 }, allow_blank: { on: :update }
+  validates :email, presence: true, length: { minimum: 5 }, allow_blank: { on: :update }
+  validates :password, presence: true, length: { minimum: 6 }, allow_blank: { on: :update }
 
   def user_groups
     groups.where(user_id: id).order(created_at: :desc)
