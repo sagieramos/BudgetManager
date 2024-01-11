@@ -18,7 +18,12 @@
   <% else %>
     <div class="field-select">
       <%= form.label :Select_categories %>
-      <%= form.collection_check_boxes(:group_ids, current_user.groups, :id, :name) %>
+      <%= form.collection_check_boxes(:group_ids, current_user.groups, :id, :name) do |group_checkbox| %>
+  <div class="checkbox-item">
+    <%= group_checkbox.check_box %>
+    <%= group_checkbox.label %>
+  </div>
+<% end %>
     </div>
   <% end %>
 
