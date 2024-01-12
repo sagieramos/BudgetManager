@@ -14,7 +14,7 @@ window.addEventListener("resize", function() {
     headerHeightControl();
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("turbo:load", function() {
     const recentEntities = document.getElementById('recent-entities');
     const ancientEntities = document.getElementById('ancient-entities');
     const allEntities = document.getElementById('all-entities');
