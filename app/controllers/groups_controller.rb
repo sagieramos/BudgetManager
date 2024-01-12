@@ -3,13 +3,13 @@ class GroupsController < ApplicationController
   before_action :set_group, only: %i[show edit update destroy]
 
   def index
-    @groups = current_user.groups
-    @total_entities_count = @groups.sum { |group| group.entities.count }
+    @groups = current_user.groups.includes(:entities)
+    @total_entities_count = @groups.sum { |group| group.entities.size }
     @total_entities_sum = @groups.sum { |group| group.entities.sum(:amount) }
   end
 
   def show
-    @group = Group.find(params[:id])
+    @group = Group.includes(:entities).find(params[:id])
     @total_amount = @group.entities.sum(:amount)
   end
 
