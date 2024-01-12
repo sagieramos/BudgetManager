@@ -3,7 +3,6 @@ class EntitiesController < ApplicationController
   before_action :set_entity, only: %i[show edit update destroy]
 
   def index
-    @entities = Entity.entities_by_user(current_user).includes(:groups)
     @recent_entities = Entity.most_recent(current_user).includes(:groups)
     @ancient_entities = Entity.most_ancient(current_user).includes(:groups)
   end

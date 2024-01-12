@@ -8,11 +8,13 @@ class Entity < ApplicationRecord
   validates :name, presence: true
   validates :amount, presence: true, numericality: { greater_than_or_equal_to: 0 }
 
-  def self.most_recent(user, limit = 5)
+  def self.most_recent(user, limit = nil)
+    limit ||= user.entities.count
     where(user:).order(created_at: :desc).limit(limit)
   end
 
-  def self.most_ancient(user, limit = 5)
+  def self.most_ancient(user, limit = nil)
+    limit ||= user.entities.count
     where(user:).order(created_at: :asc).limit(limit)
   end
 
