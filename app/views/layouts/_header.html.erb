@@ -1,33 +1,30 @@
 <header class="bg-primary fixed-top">
   <nav class="navbar navbar-expand-lg" data-bs-theme="dark">
     <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <% if user_signed_in? %>
-            <%= link_to 'Profile', user_path(current_user), class: "nav-link #{user_class_active}" %>
-            <%= link_to 'Categories', groups_path, class: "nav-link #{group_class_active}" %>
-            <%= link_to 'Transactions', entities_path, class: "nav-link #{entity_class_active}" %>
-            <%= link_to 'Add category', new_group_path, class: "nav-link #{new_group_class}" %>
-            <%= link_to 'Add transaction', new_entity_path, class: "nav-link #{new_entity_class}" %>
-            <br>
-            <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
-          <% else %>
-            <%= link_to 'Sign In', new_user_session_path, class: 'nav-link' %>
-            <%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link' %>
-          <% end %>
+    
+    <% if request.path == '/groups' %>
+      <%= render partial: 'layouts/menu' %>
+    <% elsif request.path == '/entities' || request.path == '/groups/new'%>
+      <%= material_icon_link(root_path) %>
+    <% elsif request.path == '/groups/new' %>
+      <%= material_icon_link(root_path) %>
+    <% elsif params[:group_id].present? %>
+      <%= material_icon_link(entities_path(group_id: params[:group_id])) %>
+    <% else %>
+       <%= material_icon_link(root_path) %>
+    <% end %>
 
-          <br />
-        </div>
-      </div>
       <h2 class="navbar-brand text-uppercase txt-head">
         <%= navbar_brand_text %>
       </h2>
-      <span class="material-symbols-outlined text-white">search</span>
-    </div>
-  <%= render 'entities/toggle_buttons' %>
 
+    <% unless request.path == '/groups' %>
+      <%= render partial: 'layouts/menu' %>
+     <% else %>
+      <span class="material-symbols-outlined text-white mr-3">branding_watermark </span>
+    <% end %>
+    </div>
+    
+    <%= render 'entities/toggle_buttons' %>
   </nav>
 </header>

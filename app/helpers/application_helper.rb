@@ -20,6 +20,10 @@ module ApplicationHelper
     "₦#{amount}"
   end
 
+  def material_icon_link(path)
+    link_to(content_tag(:span, 'arrow_back_ios', class: "material-symbols-outlined text-white").html_safe, path)
+  end
+
   private
 
   def groups_text
