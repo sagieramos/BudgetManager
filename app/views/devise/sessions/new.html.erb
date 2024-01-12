@@ -1,29 +1,23 @@
-<br>
-<div class="group-item">
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="mb-3">
-    <%= f.label :email, class: "form-label"%><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", "aria-describedby": "emailHelp" %>
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-  </div>
+<div class="px-0">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-  <div class="mb-3">
-    <%= f.label :password, class: "form-label" %><br />
-    <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+  <div class="new-session fixed-top bg-primary navbar px-4">
+    <%= material_icon_link(root_path) %>
+    <h6>LOGIN</h6>
+    <%= f.submit "Login", class: "signup-submit btn btn-outline-light" %>
   </div>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="px-2 mt-5 pt-4">
+  
+    <%= f.email_field :email, autofocus: true,placeholder:"Email", autocomplete: "email", class: "form-control form-control-lg mt-2 mb-1" %>
+  
+    <%= f.password_field :password,placeholder:"Password", autocomplete: "current-password", class: "form-control form-control-lg mb-1" %>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="mb-3 form-check">
-      <%= f.check_box :remember_me, class: "form-check-input" %>
-      <%= f.label :remember_me, class: "form-check-label" %>
-    </div>
+    <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+      <%= link_to "Forgot password?", new_password_path(resource_name), class: "forgot-link mt-2 d-flex justify-content-center" %><br />
+    <% end %>
+  
+  </div>
+  
   <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in", class: "btn btn-primary" %>
-  </div>
-<% end %>
-
-<br />
-
-<%= render "devise/shared/links" %>
+</div>

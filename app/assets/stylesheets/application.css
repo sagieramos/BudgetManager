@@ -16,6 +16,13 @@
 
 /* app/assets/stylesheets/custom.css */
 
+:root {
+  --main-color: #3778c2;
+  --text-color: #434b54;
+  --second-color: #5fb523;
+  --white-color: #fff;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -395,4 +402,51 @@ a:hover {
   margin: auto;
   padding: 0;
   margin-top: 3px;
+}
+
+.new-session {
+  padding: 12px;
+}
+
+.new-session * {
+  color: #ffffffc1;
+}
+
+.pd {
+  padding: 0 24px;
+}
+
+.splash-main {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.splash-container {
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.splash-container h2 {
+  font-family: 'Lobster', sans-serif;
+  font-size: 3.5em;
+  font-weight: bold;
+  color: #212529;
+}
+
+.login-link {
+  width: 100% !important;
+  background-color: var(--main-color) !important;
+  color: var(--white-color) !important;
+  border-radius: 4px !important;
+  border: 0.5px solid #dee2e6 !important;
+  margin-bottom: 2px !important;
+}
+
+.signup-link {
+  width: 100% !important;
+  border-radius: 4px !important;
+  border: 1px solid #dee2e6 !important;
 }

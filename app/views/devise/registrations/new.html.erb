@@ -1,38 +1,21 @@
-<br>
-<div class="group-item">
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<div class="px-0">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+  <div class="new-session fixed-top bg-primary navbar navbar-toggle px-4"> 
+     <%= material_icon_link(root_path) %>
+    <h6>SIGN UP</h6>
+    <%= f.submit "Sign up", class: "signup-submit btn btn-primary btn-outline-light" %>
+  </div>
   <%= render "devise/shared/error_messages", resource: resource %>
-
-   <div class="mb-3">
-    <%= f.label :Full_name, class: "form-label" %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
+  <div class="px-2 mt-5 pt-4">
+    <%= f.text_field :name, autofocus: true,placeholder:"Full Name", autocomplete: "name", class: "form-control form-control-lg mt-2 mb-1" %>
+  
+    <%= f.email_field :email, autofocus: true,placeholder:"Email", autocomplete: "email", class: "form-control form-control-lg mb-1" %>
+  
+    <%= f.password_field :password,placeholder:"Password (6 characters minimum)", autocomplete: "new-password", class: "form-control form-control-lg mb-1" %>
+  
+    <%= f.password_field :password_confirmation,placeholder:"Confirm Password", autocomplete: "new-password", class: "form-control form-control-lg mb-1" %>
   </div>
-
-  <div class="mb-3">
-    <%= f.label :email, class: "form-label" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", "aria-describedby": "emailHelp" %>
-  </div>
-
-  <div class="mb-3">
-    <%= f.label :password, class: "form-label"%>
-    <% if @minimum_password_length %>
-    <em class="form-text">(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password", class: "form-control", "aria-describedby": "emailHelp" %>
-  </div>
-
-  <div class="mb-3">
-    <%= f.label :password_confirmation, class: "form-label"%><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", "aria-describedby": "emailHelp" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up", class: "btn btn-primary" %>
-  </div>
-<% end %>
-
-<br />
-
-<%= render "devise/shared/links" %>
+  
+  <% end %>
 </div>
-
