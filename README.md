@@ -14,6 +14,7 @@
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
+  - [🚀 Live Demo](#live-demo)
   - [💻 Getting Started ](#-getting-started-)
     - [Prerequisites](#prerequisites)
     - [Setup](#setup)
@@ -49,7 +50,16 @@
 
 ### Key Features <a name="key-features"></a>
 
-- Create posts
+- Manage Budget
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- LIVE DEMO -->
+
+## 🚀 Live Demo <a name="live-demo"></a>
+[Check out the live demo](https://mysite-nmu0.onrender.com/)
+
+[Video]("#")
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -105,7 +115,8 @@ To run tests, run the following command:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **[More quaries]**
+- [ ] **[Develop the error page]**
+- [ ] **[Improve the UI]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
