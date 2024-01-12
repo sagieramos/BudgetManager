@@ -21,8 +21,9 @@ module ApplicationHelper
   end
 
   def material_icon_link(path)
-    link_to(content_tag(:span, 'arrow_back_ios', class: "material-symbols-outlined text-white").html_safe, path)
+    link_to(content_tag(:button, content_tag(:span, 'arrow_back_ios', class: "material-symbols-outlined").html_safe, type: "button", class: "navbar-toggler"), path)
   end
+  
 
   private
 
