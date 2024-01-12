@@ -72,9 +72,19 @@ nav {
   flex-direction: column;
 }
 
-#toggle-buttons {
-  align-self: flex-end;
-  margin: 0 24px;
+.short-line {
+  font-weight: 600;
+}
+
+.short-line::after {
+  content: "";
+  display: block;
+  width: 5px;
+  height: 5px;
+  background-color: #ddd;
+  margin: 0 auto;
+  margin-top: 4px;
+  border-radius: 50%;
 }
 
 #toggle-buttons button {
@@ -394,8 +404,7 @@ a:hover {
 }
 
 .no-mg-side {
-  margin-left: 0;
-  margin-right: 0;
+  margin: 0;
 }
 
 .material-symbols-outlined {
