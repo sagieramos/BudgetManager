@@ -6,17 +6,17 @@ default: &default
 
 development:
   <<: *default
-  database: budget_manager_dev
-  username: sagie
-  password: password
-  host: localhost
+  database: <%= ENV["DB_NAME"] %>
+  username: <%= ENV["DB_USER"] %>
+  password: <%= ENV["DB_PASS"] %>
+  host: <%= ENV["DB_HOST"] %>
 
 test:
   <<: *default
-  database: budget_manager_test
-  username: sagie
-  password: password
-  host: localhost
+  database: <%= ENV["DB_NAME"] %>
+  username: <%= ENV["DB_USER"] %>
+  password: <%= ENV["DB_PASS"] %>
+  host: <%= ENV["DB_HOST"] %>
 
 production:
   <<: *default
