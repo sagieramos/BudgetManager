@@ -21,7 +21,7 @@
     <% unless request.path == '/groups' %>
       <%= render partial: 'layouts/menu' %>
      <% else %>
-      <%= link_to root_path, class: "mr-3" do %>
+      <%= link_to root_path, class: "mr-3 navbar-toggler" do %>
         <span class="material-symbols-outlined text-white">branding_watermark</span>
       <% end %>
     <% end %>
