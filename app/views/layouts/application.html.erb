@@ -19,19 +19,35 @@
   <div id="hero" class="container">
 
   <div>
-    <% if notice %>
-      <div class="alert alert-success">
-        <%= notice %>
-      </div>
-    <% end %>
+    <% unless request.path == "/users/sign_in" || request.path == "/users/sign_up"%>
+      <% if notice %>
+        <div class="alert alert-success">
+          <%= notice %>
+        </div>
+      <% end %>
 
-    <% if alert %>
-      <div class="alert alert-danger">
-        <%= alert %>
-      </div>
+      <% if alert %>
+        <div class="alert alert-danger">
+          <%= alert %>
+        </div>
+      <% end %>
     <% end %>
 
     <%= yield %>
+
+    <% if request.path == "/users/sign_in" || request.path == "/users/sign_up"%>
+      <% if notice %>
+        <div class="alert alert-success">
+          <%= notice %>
+        </div>
+      <% end %>
+
+      <% if alert %>
+        <div class="alert alert-danger">
+          <%= alert %>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 
   </div>
