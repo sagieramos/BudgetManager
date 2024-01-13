@@ -139,6 +139,7 @@ If you like this project, please stay tune for more features
 
 - Jehovah God
 - [Microverse Team](https://www.microverse.org/).
+- Original design idea by [Gregoire Vella on Behance](https://www.behance.net/gregoirevella).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
