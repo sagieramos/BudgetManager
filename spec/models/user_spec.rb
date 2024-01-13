@@ -43,8 +43,8 @@ RSpec.describe User, type: :model do
   context 'callbacks' do
     it 'deletes associated group entities before destroy' do
       user = User.create(name: 'Test User', email: 'user@example.com', password: 'password')
-      group = Group.create(name: 'Test Group', user: user)
-      entity = Entity.create(name: 'Test Entity', amount: 100, user: user, groups: [group])
+      group = Group.create(name: 'Test Group', user:)
+      Entity.create(name: 'Test Entity', amount: 100, user:, groups: [group])
 
       expect { user.destroy }.to change { GroupEntity.count }.from(1).to(0)
     end
