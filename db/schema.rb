@@ -44,7 +44,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_10_064749) do
 
   create_table "entities", force: :cascade do |t|
     t.string "name"
-    t.money "amount", scale: 2
+    t.decimal "amount"
     t.bigint "author_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
