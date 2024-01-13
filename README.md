@@ -10,18 +10,17 @@
 
 # 📗 Table of Contents
 - [📗 Table of Contents](#-table-of-contents)
-- [📖 BudgetManager ] ](#-BudgetManager-)
+- [📖 \[BudgetManager\] ](#-budgetmanager-)
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
-  - [🚀 Live Demo](#live-demo)
+  - [🚀 Live Demo ](#-live-demo-)
   - [💻 Getting Started ](#-getting-started-)
     - [Prerequisites](#prerequisites)
     - [Setup](#setup)
     - [Install](#install)
     - [Usage](#usage)
     - [Run tests](#run-tests)
-    - [For Unix:](#for-unix)
   - [👥 Authors ](#-authors-)
   - [🔭 Future Features ](#-future-features-)
   - [🤝 Contributing ](#-contributing-)
@@ -59,7 +58,7 @@
 ## 🚀 Live Demo <a name="live-demo"></a>
 [Check out the live demo](https://mysite-nmu0.onrender.com/)
 
-[Video]("#")
+[Video](https://www.loom.com/share/449a75201327438e80cdc014ad3470e6?sid=04bc7353-b236-4664-9bb1-4d0a27a9f062)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
