@@ -23,6 +23,11 @@
   --white-color: #fff;
 }
 
+@font-face {
+  font-family: 'Proxima Nova Bold';
+  src: url('../fonts/proxima_nova_bold.ttf') format('ttf');
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -193,15 +198,27 @@ h1 {
 }
 
 .new-group-link {
-  display: block;
-  margin-top: 10px;
-  padding: 10px;
-  background-color: #28a745;
-  color: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #5fb523;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.new-group-link-inner {
   text-align: center;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
+  color: #fff;
+  align-self: center;
+  font-size: 1.1rem;
+  border: 2px solid #fff;
+  width: 100%;
+  height: 100%;
+  margin: 6px;
+  padding: 12px;
 }
 
 .new-group-link:hover {
@@ -458,4 +475,9 @@ a:hover {
   width: 100% !important;
   border-radius: 4px !important;
   border: 1px solid #dee2e6 !important;
+}
+
+header {
+  background: linear-gradient(to bottom, #3778c2, #376aaf);
+  padding: 12px;
 }
