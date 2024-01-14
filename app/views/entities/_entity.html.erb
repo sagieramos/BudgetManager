@@ -1,0 +1,19 @@
+<li class="group-item">
+  <div class="group-details">
+    <div class="group-i">
+      <% if @entity.groups.any? %>
+        <% group_icon = @entity.groups.first.icon %>
+        <%= image_tag(group_icon.present? ? group_icon : 'default.png', alt: 'GroupIcon', class: "group-icon") %> 
+      <% else %>
+        <%= image_tag 'default.png', alt: 'Default Icon', class: "group-icon" %>
+      <% end %>
+      <div class="group-inners">
+        <%= link_to @entity.name, @entity, class: "group-name"%>
+        <p class="created-at">
+          <%= @entity.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
+        </p>
+      </div>
+    </div>
+    <p class="group-info"><%= format_currency(@entity.amount) %></p>
+  </div>
+</li>

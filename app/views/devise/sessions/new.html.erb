@@ -1,0 +1,23 @@
+<div class="px-0">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+  <div class="new-session fixed-top bg-primary navbar px-4">
+    <%= material_icon_link(root_path) %>
+    <h6>LOGIN</h6>
+    <%= f.submit "Login", class: "signup-submit btn btn-outline-light" %>
+  </div>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="px-2 mt-5 pt-4">
+  
+    <%= f.email_field :email, autofocus: true,placeholder:"Email", autocomplete: "email", class: "form-control form-control-lg mt-2 mb-1" %>
+  
+    <%= f.password_field :password,placeholder:"Password", autocomplete: "current-password", class: "form-control form-control-lg mb-1" %>
+
+    <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+      <%= link_to "Forgot password?", new_password_path(resource_name), class: "forgot-link mt-2 d-flex justify-content-center" %><br />
+    <% end %>
+  
+  </div>
+  
+  <% end %>
+</div>

@@ -1,0 +1,46 @@
+<div class="entity-detail">
+  <div class="entity-i">
+    <% if @group.icon.attached? %>
+      <%= image_tag @group.icon, class: "group-icon" %>
+    <% else %>
+      <%= image_tag 'default.png', class: "group-icon" %>
+    <% end %>
+    <h1 class="group-name-nl"><%= @group.name %></h1>
+  </div>
+
+  <% if @group.entities.present? %>
+    <table>
+      <thead>
+        <tr>
+          <th>Transactions (<%= @group.entities.count %>)</th>
+          <th>Amount</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @group.entities.each do |entity| %>
+          <tr>
+            <td><%= link_to entity.name, entity_path(entity) %></td>
+            <td><%= format_currency(entity.amount) %></td>
+            <td><%= entity.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <br />
+    <h3 class="h3-title">Total Amount: <%= format_currency(@group.entities.sum(:amount)) %></h3>
+  <% else %>
+    <p>No transaction</p>
+  <% end %>
+
+  <br />
+  <div>
+    <% if @group.user == current_user %>
+      <%= link_to 'Add transaction', new_entity_path(group_id: @group.id) %> |
+      <%= link_to 'Edit', edit_group_path(@group) %> |
+      <%= link_to 'Delete', group_path(@group), method: :delete, data: { confirm: 'Are you sure you want to delete this group?' } %>
+    <% end %>
+  </div>
+
+  <%= link_to 'Back Categories', groups_path %>
+</div>

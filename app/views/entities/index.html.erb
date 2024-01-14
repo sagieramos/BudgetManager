@@ -1,0 +1,26 @@
+  <div class="row">
+
+<div id="entity-list">
+  <div id="recent-entities" style="display: block;">
+    <ul class="entities-collections">
+      <% @recent_entities.each do |entity| %>
+        <% @entity = entity %>
+        <%= render partial: 'entity' %>
+      <% end %>
+    </ul>
+  </div>
+
+  <div id="ancient-entities" style="display: none;">
+    <ul class="entities-collections">
+      <% @ancient_entities.each do |entity| %>
+        <% @entity = entity %>
+        <%= render partial: 'entity' %>
+      <% end %>
+    </ul>
+  </div>
+</div>
+</div>
+
+<%= link_to 'add a new transaction', new_entity_path, class: "link-to-new btn btn-success mt-3 new-group-link" %>
+
+<br>

@@ -1,0 +1,46 @@
+<br />
+<div class="group-item form-item">
+<%= form_with(model: entity, local: true) do |form| %>
+  <% if entity.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(entity.errors.count, 'error') %> prohibited this entity from being saved:</h2>
+
+      <ul>
+        <% entity.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% if params[:group_id].present? %>
+    <%= form.hidden_field :group_id, value: params[:group_id] %>
+  <% else %>
+    <div class="field-select">
+      <%= form.label :Select_categories %>
+      <%= form.collection_check_boxes(:group_ids, current_user.groups, :id, :name) do |group_checkbox| %>
+  <div class="checkbox-item">
+    <%= group_checkbox.check_box %>
+    <%= group_checkbox.label %>
+  </div>
+<% end %>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, placeholder: "groceries"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :amount %>
+    <%= form.number_field :amount, placeholder: "0.00" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Submit' %>
+  </div>
+<% end %>
+</div>
+
+<br />

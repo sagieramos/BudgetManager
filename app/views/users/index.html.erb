@@ -1,0 +1,34 @@
+<h1>Your Entities</h1>
+
+<% if @users.any? %>
+  <ul class="entities-collections">
+    <% @users.each do |entity| %>
+      <%= link_to entity_path(entity) do %>
+        <li class="entity">
+          <% if entity.groups.any? %>
+            <% group_icon = entity.groups.first.icon %>
+            <%= image_tag(group_icon.present? ? group_icon : 'default.png', alt: 'GroupIcon', class: "group-icon") %> 
+          <% else %>
+            <%= image_tag 'default.png', alt: 'Default Icon', class: "group-icon" %>
+          <% end %>
+          <div>
+            <div>
+              <p><%= entity.name %></p> 
+              <p><%= entity.amount %></p>
+            </div>
+            <p><%= entity.created_at.strftime('%Y-%m-%d %H:%M:%S') %></p>
+          </div>
+          <!-- <p>
+          <% if entity.groups.any? %>
+            <%= entity.groups.map { |group| link_to(group.name, group_path(group)) }.join(', ').html_safe %>
+          <% end %>  
+          -->
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No entities found for the current user.</p>
+<% end %>
+
+<%= link_to 'New Entity', new_entity_path %>

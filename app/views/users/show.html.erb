@@ -1,0 +1,27 @@
+
+<br>
+<div class="group-item">
+<% unless @user == current_user %>
+  <h2><%= @user.name %>'s Profile</h2>
+<% end %>
+
+
+<p>Name: <%= @user.name %></p>
+
+<% if @user == current_user %>
+    <p>Email: <%= @user.email %></p>
+<% end %>
+
+<p>Number of Categories: <%= @user.groups.count %></p>
+<p>Number of transactions: <%= @user.entities.count %></p>
+<p>Created at: <%= @user.created_at %></p>
+</div>
+<br>
+
+<% if @user == current_user %>
+    <%= link_to 'Edit Profile', edit_user_path(@user) %>
+<% end %>
+
+<%= link_to 'Back', entities_path %>
+
+<br>

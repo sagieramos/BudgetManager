@@ -1,0 +1,36 @@
+<% if @groups.any? %>
+  <ul class="groups-list">
+    <% @groups.each do |group| %>
+      <li class="group-item">
+        <div class="group-details">
+
+          <div class="group-i">
+            <% if group.icon.attached? %>
+              <%= image_tag group.icon, class: "group-icon" %>
+            <% else %>
+              <%= image_tag 'default.png', class: "group-icon" %>
+            <% end %>
+            
+            <div class="group-inners">
+              <%= link_to group.name, group_path(group), class: "group-name" %>
+              <p class="group-created-at">
+                <%= group.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
+              </p>
+            </div>
+          </div>
+
+          <p class="group-info">
+              <% currency = format_currency(group.entities.sum(:amount))%>
+              <%= group.entities.count %> transactions <span><%= currency %></span>
+          </p>
+          </div>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p class="no-groups-message">No groups found for the current user.</p>
+<% end %>
+
+<%= link_to 'add a new category', new_group_path, class: "new-group-link" %>
+
+<br>
