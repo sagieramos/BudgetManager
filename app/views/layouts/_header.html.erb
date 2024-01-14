@@ -1,4 +1,4 @@
-<header class="bg-primary fixed-top">
+<header id="header" class="fixed-top">
   <nav class="navbar navbar-expand-lg" data-bs-theme="dark">
     <div class="container-fluid">
     
@@ -8,8 +8,6 @@
       <%= material_icon_link(root_path) %>
     <% elsif request.path == '/groups/new' %>
       <%= material_icon_link(root_path) %>
-    <% elsif params[:group_id].present? %>
-      <%= material_icon_link(entities_path(group_id: params[:group_id])) %>
     <% else %>
        <%= material_icon_link(root_path) %>
     <% end %>

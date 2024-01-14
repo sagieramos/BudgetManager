@@ -10,6 +10,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.includes(:entities).find(params[:id])
+    @entities = @group.entities.order(created_at: :desc)
     @total_amount = @group.entities.sum(:amount)
   end
 

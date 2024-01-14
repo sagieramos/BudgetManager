@@ -1,11 +1,11 @@
 <div class="px-0  mt-5 pt-4">
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
-  <div class="new-session fixed-top bg-primary navbar navbar-toggle px-4"> 
+  <header class="new-session fixed-top navbar navbar-toggle"> 
      <%= material_icon_link(root_path) %>
     <h6>SIGN UP</h6>
-    <%= f.submit "Sign up", class: "signup-submit btn btn-primary btn-outline-light" %>
-  </div>
+    <%= f.submit "Sign up", class: "signup-submit btn btn-outline-light" %>
+  </header>
   <%= render "devise/shared/error_messages", resource: resource %>
   <div class="px-2">
     <%= f.text_field :name, autofocus: true,placeholder:"Full Name", autocomplete: "name", class: "form-control form-control-lg mt-2 mb-1" %>

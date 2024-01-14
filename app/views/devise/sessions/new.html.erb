@@ -1,11 +1,11 @@
 <div class="px-0">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-  <div class="new-session fixed-top bg-primary navbar px-4">
+  <header class="new-session fixed-top navbar px-4">
     <%= material_icon_link(root_path) %>
     <h6>LOGIN</h6>
     <%= f.submit "Login", class: "signup-submit btn btn-outline-light" %>
-  </div>
+  </header>
   <%= render "devise/shared/error_messages", resource: resource %>
   <div class="px-2 mt-5 pt-4">
   
