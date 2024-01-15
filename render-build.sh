@@ -10,4 +10,4 @@ RAILS_ENV=production bin/rails assets:precompile
 
 ./bin/rails db:migrate
 
-rails server -e production
+# rails server -e production
